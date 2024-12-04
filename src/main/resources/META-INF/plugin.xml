@@ -1,0 +1,20 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.gicheol.riverpodfreezedgenerator</id>
+    <name>Riverpod Freezed Generator</name>
+    <vendor>LEEGICHEOL</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="com.gicheol.riverpodfreezedgenerator.RiverpodFreezedGeneratorApplication"/>
+    </extensions>
+
+    <actions>
+        <action id="com.gicheol.com.gicheol.riverpodfreezedgenerator.action.RiverpodFreezedGeneratorAction"
+                class="com.gicheol.riverpodfreezedgenerator.action.RiverpodFreezedGeneratorAction"
+                text="Riverpod Freezed Generator">
+            <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
+        </action>
+    </actions>
+</idea-plugin>
