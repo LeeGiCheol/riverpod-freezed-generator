@@ -5,14 +5,44 @@
     <vendor>LEEGICHEOL</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>Dart</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="com.gicheol.riverpodfreezedgenerator.RiverpodFreezedGeneratorApplication"/>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.widget.StatelessWidgetToConsumerWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.widget.StatelessWidgetToConsumerStatefulWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.widget.StatefulWidgetToConsumerWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.widget.StatefulWidgetToConsumerStatefulWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.consumerwidget.ConsumerWidgetToStatelessWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.consumerwidget.ConsumerWidgetToStatefulWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.consumerwidget.ConsumerWidgetToConsumerStatefulWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.consumerwidget.ConsumerStatefulWidgetToStatelessWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.consumerwidget.ConsumerStatefulWidgetToStatefulWidget</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.gicheol.riverpodfreezedgenerator.action.converter.consumerwidget.ConsumerStatefulWidgetToConsumerWidget</className>
+        </intentionAction>
     </extensions>
 
     <actions>
-        <action id="com.gicheol.com.gicheol.riverpodfreezedgenerator.action.RiverpodFreezedGeneratorAction"
-                class="com.gicheol.riverpodfreezedgenerator.action.RiverpodFreezedGeneratorAction"
+        <action id="com.gicheol.riverpodfreezedgenerator.action.generator.RiverpodFreezedGeneratorAction"
+                class="com.gicheol.riverpodfreezedgenerator.action.generator.RiverpodFreezedGeneratorAction"
                 text="Riverpod Freezed Generator">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
         </action>

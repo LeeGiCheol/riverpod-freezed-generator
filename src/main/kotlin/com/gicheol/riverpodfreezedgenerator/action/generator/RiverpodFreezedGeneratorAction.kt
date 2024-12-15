@@ -1,10 +1,11 @@
-package com.gicheol.riverpodfreezedgenerator.action
+package com.gicheol.riverpodfreezedgenerator.action.generator
 
 import com.gicheol.riverpodfreezedgenerator.generator.filetype.DartFileType
 import com.gicheol.riverpodfreezedgenerator.constant.RadioType
 import com.gicheol.riverpodfreezedgenerator.generator.DartFileContentGenerator
 import com.gicheol.riverpodfreezedgenerator.generator.template.DartFileContentTemplate
 import com.gicheol.riverpodfreezedgenerator.ui.JsonInputDialog
+import com.gicheol.riverpodfreezedgenerator.util.Utility
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.LangDataKeys
@@ -75,7 +76,6 @@ class RiverpodFreezedGeneratorAction : AnAction("Riverpod Freezed Generator") {
                         onChange,
                         fileType,
                     )
-
             }
             else -> {
                 DartFileContentTemplate.generateServiceDartCode(dartFileName)
@@ -101,7 +101,7 @@ class RiverpodFreezedGeneratorAction : AnAction("Riverpod Freezed Generator") {
         action(project) {
             val file =
                 psiFileFactory.createFileFromText(
-                    "${camelToSnake(dartFileName).trim('`')}.dart",
+                    "${Utility.camelToSnake(dartFileName).trim('`')}.dart",
                     DartFileType(),
                     dartFileContent
                 )
@@ -116,11 +116,4 @@ class RiverpodFreezedGeneratorAction : AnAction("Riverpod Freezed Generator") {
             }
         }, "insertDart", "insertDart")
     }
-
-
-
-    private fun camelToSnake(camelStr: String): String {
-        return camelStr.replace(Regex("([a-z])([A-Z])"), "$1_$2").toLowerCase()
-    }
-
 }
