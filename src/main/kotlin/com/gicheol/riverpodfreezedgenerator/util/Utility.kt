@@ -54,21 +54,18 @@ class Utility {
             }.sortedBy { it.name }
         }
 
-        fun findFields(stateClass: DartClass): String {
-            var result = ""
+        fun findFields(stateClass: DartClass): MutableMap<String, String> {
+            val result = mutableMapOf<String, String>()
+
             for (field in stateClass.fields) {
                 val stateClassText = stateClass.text
                 if (stateClassText.contains(field.text)) {
                     val startIndex = stateClassText.indexOf(field.text)
                     val endIndex = stateClassText.indexOf(";", startIndex)
                     if (endIndex != -1) {
-                        result += "${stateClassText.substring(startIndex, endIndex + 1)}\n"
+                        result[field.name ?: ""] = "${stateClassText.substring(startIndex, endIndex + 1)}\n"
                     }
                 }
-            }
-
-            if (result.isNotEmpty()) {
-                result += "\n"
             }
 
             return result
