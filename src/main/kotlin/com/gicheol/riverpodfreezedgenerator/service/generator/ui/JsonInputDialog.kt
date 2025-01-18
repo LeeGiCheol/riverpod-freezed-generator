@@ -129,6 +129,7 @@ class JsonInputDialog(
 
         addListener()
 
+        onChangeCheckBox.isSelected = true
         onChangeCheckBox.isEnabled = false
 
         mainPanel.add(bottomPanel, BorderLayout.SOUTH)
@@ -143,7 +144,10 @@ class JsonInputDialog(
             val markupModel = jsonContentEditor.markupModel
             markupModel.removeAllHighlighters()
 
+            isBuildRunCheckBox.isEnabled = true
             onChangeCheckBox.isEnabled = providerButton.isSelected
+            onChangeCheckBox.isSelected = providerButton.isSelected
+
             okAction.isEnabled = jsonInputDialogValidator.checkInput(jsonContentEditor.document.text) && myField.text.isNotEmpty()
         }
         modelButton.addActionListener {
@@ -152,7 +156,9 @@ class JsonInputDialog(
             val markupModel = jsonContentEditor.markupModel
             markupModel.removeAllHighlighters()
 
+            isBuildRunCheckBox.isEnabled = true
             onChangeCheckBox.isEnabled = false
+            
             okAction.isEnabled = jsonInputDialogValidator.checkInput(jsonContentEditor.document.text) && myField.text.isNotEmpty()
         }
         // service button 클릭 시 json editor 입력 받지 않음
