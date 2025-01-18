@@ -8,19 +8,19 @@
 
 - Initial project
 
-## [0.0.2]
+## [0.1.0]
 
 ### Added
 
 - Switching Widget
 
-## [0.0.3]
+## [0.1.1]
 
 ### Added
 
 - It includes the existing parameter fields and constructors when switching widgets.
 
-## [0.0.4]
+## [0.2.0]
 
 ### Added
 
