@@ -19,3 +19,9 @@
 ### Added
 
 - It includes the existing parameter fields and constructors when switching widgets.
+
+## [0.0.4]
+
+### Added
+
+- I added a feature to optionally execute the freezed build command during file creation. I referred to the dart_mappable_plugin plugin for this.

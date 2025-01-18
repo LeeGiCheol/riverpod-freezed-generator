@@ -50,7 +50,8 @@ class JsonInputDialog(
     jsonInputDialogValidator
 ) {
     private lateinit var jsonContentEditor: Editor
-    private lateinit var onChangeBox: JCheckBox
+    private lateinit var onChangeCheckBox: JCheckBox
+    private lateinit var isBuildRunCheckBox: JCheckBox
     private lateinit var modelButton: JRadioButton
     private lateinit var providerButton: JRadioButton
 
@@ -94,6 +95,7 @@ class JsonInputDialog(
         }
         clipboardPanel.add(JLabel("build: flutter pub run build_runner build --delete-conflicting-outputs"))
         clipboardPanel.add(clipboardSaveButton)
+
         bottomPanel.add(clipboardPanel)
 
         // Radio Buttons
@@ -113,14 +115,21 @@ class JsonInputDialog(
 
         // CheckBox 추가
         val checkBoxPanel = JPanel(FlowLayout(FlowLayout.LEFT))
-        onChangeBox = JCheckBox("add onChange")
-        checkBoxPanel.add(onChangeBox)
+
+        isBuildRunCheckBox = JCheckBox("Build Run")
+        isBuildRunCheckBox.isSelected = true
+        checkBoxPanel.add(isBuildRunCheckBox)
         bottomPanel.add(checkBoxPanel)
+
+        onChangeCheckBox = JCheckBox("add onChange")
+        checkBoxPanel.add(onChangeCheckBox)
+        bottomPanel.add(checkBoxPanel)
+
         bottomPanel.add(Box.createVerticalStrut(3))
 
         addListener()
 
-        onChangeBox.isEnabled = false
+        onChangeCheckBox.isEnabled = false
 
         mainPanel.add(bottomPanel, BorderLayout.SOUTH)
 
@@ -134,7 +143,7 @@ class JsonInputDialog(
             val markupModel = jsonContentEditor.markupModel
             markupModel.removeAllHighlighters()
 
-            onChangeBox.isEnabled = providerButton.isSelected
+            onChangeCheckBox.isEnabled = providerButton.isSelected
             okAction.isEnabled = jsonInputDialogValidator.checkInput(jsonContentEditor.document.text) && myField.text.isNotEmpty()
         }
         modelButton.addActionListener {
@@ -143,12 +152,13 @@ class JsonInputDialog(
             val markupModel = jsonContentEditor.markupModel
             markupModel.removeAllHighlighters()
 
-            onChangeBox.isEnabled = false
+            onChangeCheckBox.isEnabled = false
             okAction.isEnabled = jsonInputDialogValidator.checkInput(jsonContentEditor.document.text) && myField.text.isNotEmpty()
         }
         // service button 클릭 시 json editor 입력 받지 않음
         serviceButton.addActionListener {
-            onChangeBox.isEnabled = false
+            isBuildRunCheckBox.isEnabled = false
+            onChangeCheckBox.isEnabled = false
             okAction.isEnabled = myField.text.isNotEmpty()
 
             // jsonEditor readonly + 색상 변경
@@ -183,8 +193,12 @@ class JsonInputDialog(
         return jsonContentEditor.document.text
     }
 
-    fun getCheckboxClicked(): Boolean {
-        return onChangeBox.isSelected
+    fun getOnchangeCheckBoxClicked(): Boolean {
+        return onChangeCheckBox.isEnabled && onChangeCheckBox.isSelected
+    }
+
+    fun getIsBuildRunCheckBoxClicked(): Boolean {
+        return isBuildRunCheckBox.isEnabled && isBuildRunCheckBox.isSelected
     }
 
     fun getSelectedRadioOption(): RadioType {

@@ -6,6 +6,10 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>Dart</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.json</depends>
+    <depends>Dart</depends>
+    <depends>io.flutter</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <intentionAction>
@@ -46,5 +50,26 @@
                 text="Riverpod Freezed Generator">
             <add-to-group group-id="NewGroup" anchor="after" relative-to-action="NewFile"/>
         </action>
+
+        <action id="PubRunBuildRunnerCommand" text="Flutter Run Build Runner"
+                class="com.gicheol.riverpodfreezedgenerator.action.menu.RiverpodFreezedGeneratorAction"
+                description="Run 'flutter pub run build_runner build --delete-conflicting-outputs'">
+            <add-to-group group-id="BuildMenu" anchor="first" />
+            <keyboard-shortcut keymap="$default" first-keystroke="alt r" />
+        </action>
+
+
+        <group id="FlutterCommandGroup" text="Flutter Command" popup="true" icon="AllIcons.Actions.RunAll">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="WeighingNewGroup" />
+            <reference ref="PubRunBuildRunnerCommand" />
+            <reference ref="flutter.pub.get" />
+            <reference ref="flutter.pub.upgrade" />
+            <reference ref="flutter.clean" />
+            <separator />
+            <reference ref="flutter.doctor" />
+            <reference ref="flutter.upgrade" />
+            <separator />
+            <reference ref="FlutterBuildActionGroup" />
+        </group>
     </actions>
 </idea-plugin>

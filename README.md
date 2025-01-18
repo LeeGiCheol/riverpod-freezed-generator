@@ -35,14 +35,6 @@ This plugin automatically generates `*.freezed.dart` and `*.g.dart` files for cr
 - **Switching Widget** Supports switching between StatelessWidget, StatefulWidget, ConsumerWidget  
 and ConsumerStatefulWidget through Context Actions (Windows: Alt + Enter, Mac: Option + Enter).
 
-## Freezed Build Command
-
-Access the terminal and run:
-
-```bash
-flutter pub run build_runner build --delete-conflicting-outputs
-```
-
 ## Usage
 
 1. Install the plugin in your IDE (IntelliJ, Android Studio):
@@ -68,18 +60,8 @@ flutter pub run build_runner build --delete-conflicting-outputs
     - Array로 시작하는 JSON은 지원하지 않습니다.
 - **onChange 함수 생성**: Provider 선택 및 JSON Object 입력 시 사용 가능합니다.
 
-**참고**: dart 파일 생성 후 자동 빌드는 지원하지 않습니다.
-
 - **Widget 전환** : StatelessWidget, StatefulWidget, ConsumerWidget, ConsumerStatefulWidget 간 전환을  
 Context Action(Windows: Alt + Enter, Mac: Option + Enter)을 통해 간편하게 지원합니다.
-
-## Freezed 빌드 명령어
-
-터미널에 접속하여 다음 명령어를 실행하세요:
-
-```bash
-flutter pub run build_runner build --delete-conflicting-outputs
-```
 
 ## 사용법
 
