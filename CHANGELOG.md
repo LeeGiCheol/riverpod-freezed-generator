@@ -25,3 +25,4 @@
 ### Added
 
 - I added a feature to optionally execute the freezed build command during file creation. I referred to the dart_mappable_plugin plugin for this.
+- Set default value of onChange checkbox to 'checked'.
